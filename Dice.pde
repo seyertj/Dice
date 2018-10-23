@@ -7,6 +7,7 @@ void setup()
 void draw()
 {
 	background(255);
+	int numDots = 0;
 	for(int y = 0; y <= 300; y = y + 30)
 	{
 		for(int x = 0; x <= 300; x = x + 30)
@@ -14,9 +15,21 @@ void draw()
 			Die ann = new Die(x,y);
 			ann.roll();
 			ann.show();
-			ann.numDots();
+			if(ann.b == 1)
+				numDots = numDots + 1;
+			if(ann.b == 2)
+				numDots = numDots + 2;
+			if(ann.b == 3)
+				numDots = numDots + 3;
+			if(ann.b == 4)
+				numDots = numDots + 4;
+			if(ann.b == 5)
+				numDots = numDots + 5;
+			if(ann.b == 6)
+				numDots = numDots + 6;
 		}
 	}
+	text("Dice Total: " + numDots, 130, 350);
 }
 void mousePressed()
 {
@@ -40,7 +53,7 @@ class Die //models one single dice cube
 		stroke(0);
 		fill(255);
 		rect(myX, myY, 30, 30);
-		fill(0);
+		fill(255,0,0);
 		if(b == 1)
 		{
 			ellipse(myX + 15, myY + 15, 5, 5);
@@ -80,21 +93,5 @@ class Die //models one single dice cube
 			ellipse(myX + 18, myY + 15, 5, 5);
 			ellipse(myX + 18, myY + 20, 5, 5);
 		}
-	}
-	void numDots()
-	{
-		if(b == 1)
-			c = c + 1;
-		if(b == 2)
-			c = c + 2;
-		if(b == 3)
-			c = c + 3;
-		if(b == 4)
-			c = c + 4;
-		if(b == 5)
-			c = c + 5;
-		if(b == 6)
-			c = c + 6;
-		text("Total Value: " + c, 130,350);
 	}
 }
